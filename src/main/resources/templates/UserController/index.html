@@ -111,10 +111,9 @@
             </div>
         </nav>
 
-
-
-                    <div class="card col-lg-3 col-sm-6 mb-4" style="width: 18rem;" th:each="product : ${products}">
-                        <div class="view overlay">
+<div class="row">
+                    <div class="card col-6 col-sm-3 mb-4"  th:each="product : ${products}">
+                        <div class="">
                             <img class="card-img-top" th:src="@{${'img/'+product.getId()+'.jpg'}}" alt="">
 
                         </div>
@@ -124,7 +123,7 @@
                             <a th:href="@{/product(productId=${product.getId()})}" class="btn btn-warning">Перейти</a>
                         </div>
                     </div>
-
+</div>
 
 
     </div>
