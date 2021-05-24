@@ -110,25 +110,30 @@
             </div>
         </nav>
 
-        <section class="text-center mb-4">
-            <div class="row wow fadeIn">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="view overlay">
+            <div class="row" >
+                <div class="col-sm-4">
                             <img class="card-img-top" th:src="@{${'img/'+product.getId()+'.jpg'}}" alt="">
-                            <a href="">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="grey-text" th:text="${product.getName()}">Name</h5>
-                            <h5 class="dark-grey-text" th:text="${product.getPrice()+' p.'}">Price</h5>
-                            <h5 class="dark-grey-text" th:text="${product.getDescription()}">Description</h5>
-                        </div>
-                    </div>
                 </div>
+                        <div class="col-sm-8 mt-4">
+                            <h5 class="grey-text text-center" th:text="${product.getName()}">Name</h5>
+                            <h5 class="dark-grey-text text-center" th:text="${product.getPrice()+' p.'}">Price</h5>
+                            <h5 class="dark-grey-text text-left" th:text="${product.getDescription()}">Description</h5>
+                        </div>
             </div>
-        </section>
+        <form th:method="POST" th:action="@{/product}" style="display: flex;margin-top: 15px;">
+            <div class="mb-3">
+                <input type="hidden" name="productId" th:value="${product.getId()}">
+                <input id="productCount" type="number" class="form-control" name="productCount" min="1" max="10" style="width: 100px;" value="1" onchange="noEmpty()">
+            </div>
+            <div class="col-auto" style="margin-left: 15px;">
+                <button type="submit" class="btn btn-warning mb-3">Добавить в корзину</button>
+            </div>
+        </form>
+        <p th:if="${Status} == 'user_guest'">Вам нужно зарегистрироваться, чтобы добавлять товар в корзину!</p>
+        <p th:if="${Status} == 'count_overflow'">Количество одного товара в корзине не может превышать 10!</p>
+        <p th:if="${Status} == 'OK'">Товар был добавлен в корзину</p>
+
+
     </div>
 </main>
 
