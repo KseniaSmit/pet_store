@@ -16,17 +16,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
-    private IUserRepository iur;
+    private IUserRepository iUserRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
-    public UserService(IUserRepository iur) {
-        this.iur = iur;
+    public UserService(IUserRepository iUserRepository) {
+        this.iUserRepository = iUserRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return iur.findByUsername(s);
+        return iUserRepository.findByUsername(s);
     }
 
     public void create(String email, String username, String password) {
@@ -35,15 +35,15 @@ public class UserService implements UserDetailsService {
         u.setPassword(bCryptPasswordEncoder.encode(password));
         u.setEmail(email);
         u.setRole("USER");
-        iur.save(u);
+        iUserRepository.save(u);
     }
     public List<User> getAll(){
-        return iur.findAll();
+        return iUserRepository.findAll();
     }
     public  void saveUser(User user){
-        iur.save(user);
+        iUserRepository.save(user);
     }
     public void deleteUser(int id){
-        iur.deleteById(id);
+        iUserRepository.deleteById(id);
     }
 }

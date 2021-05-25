@@ -40,7 +40,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/img/**").permitAll()
                 .antMatchers("/products").permitAll()
                 .antMatchers("/product").permitAll()
-                .antMatchers("/feedback").permitAll()
                 .antMatchers("/login", "/sign").permitAll()
                 .antMatchers("/logout").hasAnyAuthority( "USER")
                 .anyRequest().authenticated()

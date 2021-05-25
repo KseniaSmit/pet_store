@@ -26,7 +26,7 @@ public class EmailService {
             }
         });
         Message msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress("bigredbear37@gmail.com", false));
+        msg.setFrom(new InternetAddress("smetannikov44ksenia@gmail.com", false));
 
         msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
         msg.setSubject("Создание заказа");
@@ -41,3 +41,4 @@ public class EmailService {
         Transport.send(msg);
     }
 }
+

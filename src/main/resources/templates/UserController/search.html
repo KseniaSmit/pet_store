@@ -48,7 +48,7 @@
             </ul>
             <ul class="navbar-nav nav-flex-icon">
                 <li class="nav-item">
-                    <a href="#" class="nav-link waves-effect">
+                    <a href="/basket" class="nav-link waves-effect">
                         <span class="badge red z-depth-1 mr-1">1</span>
                         <i class="fa fa-shopping-cart"></i>
                         <span class="clearfix d-none d-sm-inline-block">Корзина</span>
@@ -113,7 +113,7 @@
 
         <div class="row gx-5">
             <h5 th:if="${products.isEmpty()==true}">Ничего не найдено</h5>
-            <div class="card col col-sm-3 mb-4"  th:each="product : ${products}">
+            <div class="card col col-sm-3 mb-4" style="margin-right: 60px;" th:each="product : ${products}">
                 <div class="">
                     <img class="card-img-top" height="250px" th:src="@{${'img/'+product.getId()+'.jpg'}}" alt="">
 
