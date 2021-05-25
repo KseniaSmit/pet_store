@@ -97,7 +97,7 @@
             <td class="border-0 align-middle" th:text="${productService.getProductById(basket.getProductId()).getName()}"><strong>Name</strong></td>
             <td class="border-0 align-middle" th:text="${basket.getId()}"><strong>id</strong></td>
             <td class="border-0 align-middle" th:text="${productService.getProductById(basket.getProductId()).getPrice() * basket.getProductCount()} + ' р.'"><strong>price</strong></td>
-            <td class="border-0 align-middle"><input  th:id="'productCount' + ${basket.getId()}" type="number" class="form-control" name="productCount[]" min="1" max="10" style="width: 100px;" th:value="${basket.getProductCount()}" th:onchange="'noEmpty(\'productCount'+ ${basket.getId()} +'\')'"></td>
+            <td class="border-0 align-middle"><input  th:id="'productCount' + ${basket.getId()}" type="number" class="form-control" name="productCount[]" min="1" max="100" style="width: 100px;" th:value="${basket.getProductCount()}" th:onchange="'noEmpty(\'productCount'+ ${basket.getId()} +'\')'"></td>
             <td class="border-0 align-middle"><button class="btn" name="delete" th:onclick="'setDeleteBasket('+ ${basket.getId()} +')'">Удалить</button></td>
         </tr>
 
@@ -105,8 +105,8 @@
     </table>
     </form>
     <h5><br>
-        Общая стоимость:
-        <div class="text-muted" th:text="${totalPrice} + ' р.'">TOTAL PRICE</div>
+        Конечная стоимость:
+        <div class="text-muted" th:text="${totalPrice} + ' р.'">price</div>
     </h5>
 </div>
 <hr th:if="${basket.isEmpty() == false}">

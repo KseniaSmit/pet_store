@@ -147,7 +147,7 @@ public class UserController {
         for (int i = 0; i < userProducts.size(); i++) {
             res += (i + 1) + ") " + userProducts.get(i).getName() + " (Количество: " + userBaskets.get(i).getProductCount() + ", Стоимость: " + (userProducts.get(i).getPrice()*userBaskets.get(i).getProductCount()) + " р.)<br>";
         }
-        res += "Общая стоимость: " + getTotalPrice(userBaskets) + " р.<br>";
+        res += "Конечная стоимость: " + getTotalPrice(userBaskets) + " р.<br>";
         return res;
     }
     @PostMapping("/product")
@@ -174,7 +174,7 @@ public class UserController {
                 return redirectString;
             }
             else{
-                if (basket.getProductCount() + productCount > 10){
+                if (basket.getProductCount() + productCount > 100){
                     setAddBasketStatus("count_overflow");
                     return redirectString;
                 }
@@ -200,16 +200,6 @@ public class UserController {
         model.addAttribute("productService", productService);
 
         return "UserController/basket";
-    }
-    @PostMapping(value = "/basketOperation", params = "change")
-    public String changeBasket(@RequestParam(name = "basketId[]") int[] basketIds,
-                               @RequestParam(name = "productCount[]") int[] productCounts) {
-        for (int i = 0; i < basketIds.length; i++) {
-            Basket basket = basketService.getBasketById(basketIds[i]);
-            basket.setProductCount(productCounts[i]);
-            basketService.saveBasket(basket);
-        }
-        return "redirect:/basket";
     }
     @PostMapping(value = "/basketOperation", params = "delete")
     public String deleteBasket(@RequestParam(name = "basketToDeleteId", required = false) Integer basketToDeleteId) {
