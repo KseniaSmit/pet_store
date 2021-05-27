@@ -202,8 +202,7 @@ public class UserController {
         return "UserController/basket";
     }
     @PostMapping(value = "/basketOperation", params = "delete")
-    public String deleteBasket(@RequestParam(name = "basketToDeleteId", required = false) Integer basketToDeleteId) {
-        if (basketToDeleteId == null) basketToDeleteId = 1;
+    public String deleteBasket(@RequestParam(name = "basketToDeleteId") int basketToDeleteId) {
         basketService.deleteBasketById(basketToDeleteId);
         return "redirect:/basket";
     }

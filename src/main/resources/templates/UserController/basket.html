@@ -87,8 +87,8 @@
         </thead>
         <tbody>
         <tr th:each="basket : ${basket}">
-            <input type="hidden" name="purchaseToDeleteId" id="purchaseToDeleteId">
-            <input type="hidden" th:value="${basket.getId()}" name="purchaseId[]">
+            <input type="hidden" name="basketToDeleteId" id="basketToDeleteId">
+            <input type="hidden" th:value="${basket.getId()}" name="basketId[]">
             <th scope="row" class="border-0">
                 <div class="p-2">
                     <img src="" alt="" width="70" class="img-fluid rounded shadow-sm">
@@ -132,8 +132,8 @@
             countEl.value = 1;
         }
     }
-    function setDeletePurchase(id){
-        document.getElementById('purchaseToDeleteId').value = id;
+    function setDeleteBasket(id){
+        document.getElementById('basketToDeleteId').value = id;
     }
 </script>
 <!-- jQuery -->
